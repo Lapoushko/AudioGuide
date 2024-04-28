@@ -1,10 +1,12 @@
-package com.example.audioguide
+package com.example.audioguide.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.audioguide.R
+import com.example.audioguide.RouteListControllerImpl
 import com.example.audioguide.dao.RouteDAO
 import com.example.audioguide.service.RouteServiceImpl
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val routeDao = RouteDAO()
         val routeService = RouteServiceImpl(routeDao)
         recyclerView = findViewById(R.id.recyclerView)
-        routeListController = RouteListControllerImpl(routeService, this )
+        routeListController = RouteListControllerImpl(routeService)
         routeListController.setupRecyclerView(recyclerView)
 //        for (i in routeService.getRoute()) {
 //            val toast = Toast.makeText(applicationContext, i.nameRoute, Toast.LENGTH_SHORT)
