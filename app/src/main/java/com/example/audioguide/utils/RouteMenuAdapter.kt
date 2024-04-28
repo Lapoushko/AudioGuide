@@ -1,7 +1,6 @@
 package com.example.audioguide.utils
 
-import android.content.Context
-import android.graphics.drawable.Drawable
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.audioguide.R
+import com.example.audioguide.activity.ConfirmationActivity
 import com.example.audioguide.model.Route
 import com.squareup.picasso.Picasso
 
 /**
  * Адаптер для правильного отборажения списка маршрутов в меню
  */
-class RouteMenuAdapter(private val listRoutes: List<Route>, private val context: Context)
+class RouteMenuAdapter(private val listRoutes: List<Route>)
     : RecyclerView.Adapter<RouteMenuAdapter.RouteViewHolder>(){
     class RouteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val imageView : ImageView = itemView.findViewById(R.id.imageView)
+        val imageView : ImageView = itemView.findViewById(R.id.imageButton)
         val textView : TextView = itemView.findViewById(R.id.textView)
     }
 
@@ -41,16 +41,16 @@ class RouteMenuAdapter(private val listRoutes: List<Route>, private val context:
      * Установка картинок и текста у каждого маршрута
      */
     override fun onBindViewHolder(holder: RouteViewHolder, position: Int) {
-        //TODO Установить правильные изображения, а не только котиков ))))
         val route = listRoutes[position]
-        val drawable: Drawable? = Drawable.createFromPath(listRoutes[position].listPathsImage[0])
-//        println(listRoutes[position].listPathsImage[0])
-//        holder.imageView.setImageResource(R.drawable.test_photo)
-        ;
         Picasso.get()
             .load(listRoutes[position].listPathsImage[0])
             .into(holder.imageView)
-//        holder.imageView.setImageDrawable(context.getDrawable());
         holder.textView.text = route.nameRoute
+        holder.imageView.setOnClickListener{
+            val context = holder.imageView.context
+            val intent = Intent(context, ConfirmationActivity::class.java)
+            intent.putExtra("route", route) // Передача объекта Route
+            context.startActivity(intent)
+        }
     }
 }
