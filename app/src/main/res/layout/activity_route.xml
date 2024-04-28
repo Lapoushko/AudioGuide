@@ -8,68 +8,61 @@
     android:background="#11132E">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="150dp"
-        android:layout_height="146dp"
-        android:layout_marginTop="60dp"
+        android:id="@+id/description"
+        android:layout_width="360dp"
+        android:layout_height="203dp"
+        android:layout_marginBottom="284dp"
         android:text="КРАТКАЯ ИНФОРМАЦИЯ ОБ ЭКСКУРСИИ"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/route_image"
+        app:layout_constraintVertical_bias="0.726" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/route_image"
         android:layout_width="339dp"
         android:layout_height="191dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072"
+        app:layout_constraintVertical_bias="0.221"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Установить маршрут в Google Maps"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton"
-        app:layout_constraintVertical_bias="0.094" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="196dp"
         android:text="Продолжить дальше"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toTopOf="@+id/radioButton"
-        app:layout_constraintVertical_bias="0.348" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
+        android:layout_marginTop="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintTop_toTopOf="@+id/next_button"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <TextView
+        android:id="@+id/route_name"
+        android:layout_width="165dp"
+        android:layout_height="63dp"
+        android:text="имя маршрута"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
