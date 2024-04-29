@@ -6,8 +6,11 @@ import com.squareup.picasso.Picasso
 /**
  * Загружает изображения
  */
-class LoaderImage() {
-    fun loadImage(path: String, image: ImageView){
+class LoaderImage {
+    /**
+     * Загрузить изображение
+     */
+    fun loadImage(path: String, image: ImageView) {
         Picasso.get()
             .load(path)
             .into(image)
