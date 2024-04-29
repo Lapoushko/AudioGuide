@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_route"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/header_rectangle"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/route_name"
+            style="@style/h1"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_alignParentBottom="true"
+            android:text="Имя маршрута"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/h2"
+        android:text="КРАТКАЯ ИНФОРМАЦИЯ ОБ ЭКСКУРСИИ"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/route_image"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/route_image"
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:layout_marginHorizontal="40dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.126"
+        app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/next_button"
+        style="@style/button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/round_btn"
+        android:padding="20dp"
+        android:text="Продолжить дальше"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        app:layout_constraintVertical_bias="0.926" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
