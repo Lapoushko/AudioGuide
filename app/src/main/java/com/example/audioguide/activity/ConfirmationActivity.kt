@@ -1,10 +1,11 @@
 package com.example.audioguide.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.audioguide.databinding.ConfirmationActivityBinding
+import com.example.audioguide.databinding.ActivityConfirmationBinding
 import com.example.audioguide.model.Route
 import com.example.audioguide.utils.LoaderImage
 import java.io.Serializable
@@ -14,13 +15,12 @@ import java.io.Serializable
  */
 class ConfirmationActivity : AppCompatActivity() {
     private lateinit var route: Route
-
-    private lateinit var binding: ConfirmationActivityBinding
+    private lateinit var binding: ActivityConfirmationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ConfirmationActivityBinding.inflate(layoutInflater)
+        binding = ActivityConfirmationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         route = getSerializable(this, "route", Route::class.java)
@@ -32,14 +32,34 @@ class ConfirmationActivity : AppCompatActivity() {
 //        }
     }
 
-    private fun setupUI(){
+    /**
+     * Установка UI
+     */
+    private fun setupUI() {
         binding.nameRoute.text = route.nameRoute
-        binding.descriptionRoute.text = route.listInformation[0]
+        binding.descriptionRoute.text = route.descriptionText
         val loaderImage = LoaderImage()
-        loaderImage.loadImage(route.listPathsImage[0],binding.routeImage)
+        loaderImage.loadImage(route.listPathsImage[0], binding.routeImage)
+
+        binding.confirmButton.setOnClickListener {
+            val context = this
+            val intent = Intent(context, RouteActivity::class.java)
+            intent.putExtra("route", route)// Передача объекта Route
+            context.startActivity(intent)
+        }
+        binding.backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
-    private fun <T : Serializable?> getSerializable(activity: Activity, name: String, clazz: Class<T>): T {
+    /**
+     * Передача данных из предыдущей активности
+     */
+    private fun <T : Serializable?> getSerializable(
+        activity: Activity,
+        name: String,
+        clazz: Class<T>
+    ): T {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             activity.intent.getSerializableExtra(name, clazz)!!
         } else {
