@@ -26,7 +26,7 @@ class RouteActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        route = getSerializable(this, "route", Route::class.java)
+        route = getSerializable(this, Route::class.java)
 
         binding.nextButton.setOnClickListener {
             loadNextRoute()
@@ -51,13 +51,12 @@ class RouteActivity : AppCompatActivity() {
      */
     private fun <T : Serializable?> getSerializable(
         activity: Activity,
-        name: String,
         clazz: Class<T>
     ): T {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            activity.intent.getSerializableExtra(name, clazz)!!
+            activity.intent.getSerializableExtra("route", clazz)!!
         } else {
-            activity.intent.getSerializableExtra(name) as T
+            activity.intent.getSerializableExtra("route") as T
         }
     }
 

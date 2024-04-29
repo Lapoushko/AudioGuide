@@ -23,7 +23,7 @@ class ConfirmationActivity : AppCompatActivity() {
         binding = ActivityConfirmationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        route = getSerializable(this, "route", Route::class.java)
+        route = getSerializable(this, Route::class.java)
         setupUI()
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.confirm)) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -57,13 +57,12 @@ class ConfirmationActivity : AppCompatActivity() {
      */
     private fun <T : Serializable?> getSerializable(
         activity: Activity,
-        name: String,
         clazz: Class<T>
     ): T {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            activity.intent.getSerializableExtra(name, clazz)!!
+            activity.intent.getSerializableExtra("route", clazz)!!
         } else {
-            activity.intent.getSerializableExtra(name) as T
+            activity.intent.getSerializableExtra("route") as T
         }
     }
 }
