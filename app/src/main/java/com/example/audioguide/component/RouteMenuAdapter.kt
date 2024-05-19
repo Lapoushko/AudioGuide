@@ -1,4 +1,4 @@
-package com.example.audioguide.utils
+package com.example.audioguide.component
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.audioguide.R
 import com.example.audioguide.activity.ConfirmationActivity
 import com.example.audioguide.model.Route
+import com.example.audioguide.utils.LoaderImage
 
 /**
  * Адаптер для правильного отборажения списка маршрутов в меню
