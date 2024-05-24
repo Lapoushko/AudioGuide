@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) //включить контент из activity main
 
-        val routeDao = RouteDAO()
+        val routeDao = RouteDAO(this,null)
         val routeService = RouteServiceImpl(routeDao)
         recyclerView = findViewById(R.id.recyclerView)
         routeListController = RouteListControllerImpl(routeService)
