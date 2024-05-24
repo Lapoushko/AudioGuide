@@ -3,7 +3,6 @@ package com.example.audioguide.utils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.audioguide.service.RouteServiceImpl
-import com.example.audioguide.utils.RouteListController
 import com.example.audioguide.component.RouteMenuAdapter
 
 /**
@@ -13,6 +12,6 @@ class RouteListControllerImpl(private val routeService: RouteServiceImpl) : Rout
     override fun setupRecyclerView(recyclerView: RecyclerView) {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter = RouteMenuAdapter(routeService.getRoute())
+        recyclerView.adapter = RouteMenuAdapter(routeService.getRoutes())
     }
 }
