@@ -6,9 +6,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.audioguide.R
-import com.example.audioguide.utils.RouteListControllerImpl
 import com.example.audioguide.dao.RouteDAO
 import com.example.audioguide.service.RouteServiceImpl
+import com.example.audioguide.utils.RouteListControllerImpl
 
 /**
  * Класс, запускающий меню экскурсий
