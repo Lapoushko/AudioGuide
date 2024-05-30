@@ -22,27 +22,13 @@ class ListRoutes {
                 "https://storage.yandexcloud.net/images-audioguide/rtf_champion.jpg",
                 "https://storage.yandexcloud.net/images-audioguide/say_moscow.jpg",
                 "https://storage.yandexcloud.net/images-audioguide/telegraph.jpg"
-            )
-        ),
-
-        Route(
-            1, "маршрут 2",
-            "dsa",
-            arrayListOf("Пункт 1", "Пункт 2"),
+            ),
             arrayListOf(
-                "https://storage.yandexcloud.net/images-audioguide/cat.jpg",
-                "C:\\Users\\vadim\\AndroidStudioProjects\\AudioGuide\\app\\src\\main\\res\\drawable\\test_photo.jpg"
-            )
-        ),
-        Route(
-            2, "маршрут 3",
-            "dsad",
-            arrayListOf("Пункт 1", "Пункт 2"),
-            arrayListOf(
-                "https://storage.yandexcloud.net/images-audioguide/cat.jpg",
-                "C:\\Users\\vadim\\AndroidStudioProjects\\AudioGuide\\app\\src\\main\\res\\drawable\\test_photo.jpg"
-            )
+                "https://storage.yandexcloud.net/images-audioguide/mp3/shaman-ja-russkijj.mp3"
+            ),
+            arrayListOf("")
         )
+
     )
     val route: ArrayList<Route>
         get() {

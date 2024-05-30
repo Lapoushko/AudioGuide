@@ -25,11 +25,6 @@ class ConfirmationActivity : AppCompatActivity() {
         setContentView(view)
         route = getSerializable(this, Route::class.java)
         setupUI()
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.confirm)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
     }
 
     /**

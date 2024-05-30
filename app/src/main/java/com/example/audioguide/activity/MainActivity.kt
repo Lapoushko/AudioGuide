@@ -6,9 +6,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.audioguide.R
-import com.example.audioguide.RouteListControllerImpl
 import com.example.audioguide.dao.RouteDAO
 import com.example.audioguide.service.RouteServiceImpl
+import com.example.audioguide.utils.RouteListControllerImpl
 
 /**
  * Класс, запускающий меню экскурсий
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) //включить контент из activity main
 
-        val routeDao = RouteDAO()
+        val routeDao = RouteDAO(this,null)
         val routeService = RouteServiceImpl(routeDao)
         recyclerView = findViewById(R.id.recyclerView)
         routeListController = RouteListControllerImpl(routeService)

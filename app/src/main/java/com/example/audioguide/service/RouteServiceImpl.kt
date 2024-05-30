@@ -10,8 +10,7 @@ class RouteServiceImpl(routeDao: RouteDAO) : RouteService{
 
     private val routeDAO = routeDao
 
-    override fun getRoute(): List<Route> {
-        //TODO("Не реализовано")
+    override fun getRoutes(): List<Route> {
         return routeDAO.getListRoutes()
     }
 

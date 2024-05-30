@@ -1,49 +1,69 @@
 package com.example.audioguide.activity
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.example.audioguide.component.FragmentPageAdapter
 import com.example.audioguide.databinding.ActivityRouteBinding
 import com.example.audioguide.model.Route
-import com.example.audioguide.utils.LoaderImage
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.yandex.mapkit.MapKitFactory
 import java.io.Serializable
 
 /**
  * Активность текущего маршрута
  */
 class RouteActivity : AppCompatActivity() {
-    private lateinit var route: Route
     private lateinit var binding: ActivityRouteBinding
-
-    private var level = 0
-
+    private lateinit var viewPagerAdapter: FragmentPageAdapter
+    private lateinit var route: Route
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        MapKitFactory.setApiKey("9302dc8f-56ed-442a-b87f-f6c65e38301b")
+        MapKitFactory.initialize(this)
         binding = ActivityRouteBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
         route = getSerializable(this, Route::class.java)
 
-        binding.nextButton.setOnClickListener {
-            loadNextRoute()
-        }
-        setupUI()
-    }
+        viewPagerAdapter = FragmentPageAdapter(supportFragmentManager, lifecycle, route)
+        binding.tabLayout.addTab(
+            binding.tabLayout.newTab().setText("Маршрут")
+        )
+        binding.tabLayout.addTab(
+            binding.tabLayout.newTab().setText("Карта")
+        )
+        binding.viewPagerTab.adapter = viewPagerAdapter
+        binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab != null) {
+                    binding.viewPagerTab.currentItem = tab.position
+                    if (tab.position == 1){
+                        binding.viewPagerTab.isUserInputEnabled = false
+                    }else{
+                        binding.viewPagerTab.isUserInputEnabled = true
+                    }
+                }
+            }
 
-    /**
-     * Установка UI
-     */
-    private fun setupUI() {
-        binding.routeName.text = route.nameRoute
-        binding.description.text = route.listInformation[level]
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
 
-        val loaderImage = LoaderImage()
-        loaderImage.loadImage(route.listPathsImage[level], binding.routeImage)
+            override fun onTabReselected(p0: TabLayout.Tab?) {
 
+            }
+
+        })
+        binding.viewPagerTab.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position))
+            }
+        })
     }
 
     /**
@@ -58,22 +78,5 @@ class RouteActivity : AppCompatActivity() {
         } else {
             activity.intent.getSerializableExtra("route") as T
         }
-    }
-
-    /**
-     * Загрузка следующего контента
-     */
-    private fun loadNextRoute() {
-        if (level < route.listInformation.size - 1) {
-            level++
-        }
-        if (level >= route.listInformation.size - 1) {
-            binding.nextButton.text = "Завершить экскурсию"
-            binding.nextButton.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-        }
-        setupUI()
     }
 }

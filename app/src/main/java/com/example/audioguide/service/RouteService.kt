@@ -10,5 +10,5 @@ interface RouteService {
      * получить маршрут
      * @return список всех маршрутов
      */
-    fun getRoute(): List<Route> = ArrayList()
+    fun getRoutes(): List<Route> = ArrayList()
 }
