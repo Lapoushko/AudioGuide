@@ -25,7 +25,8 @@ class ListRoutes {
             ),
             arrayListOf(
                 "https://storage.yandexcloud.net/images-audioguide/mp3/shaman-ja-russkijj.mp3"
-            )
+            ),
+            arrayListOf("")
         )
 
     )
