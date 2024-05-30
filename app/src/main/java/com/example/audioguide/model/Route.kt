@@ -11,7 +11,8 @@ class Route(
     private val description: String,
     private val info: List<String>,
     private val paths: List<String>,
-    private val audio: List<String>
+    private val audio: List<String>,
+    private val points: List<String>
 ) : Serializable {
     val idRoute: Int
         get() = id
@@ -27,4 +28,7 @@ class Route(
         get() = name
     val audioPath: List<String>
         get() = audio
+
+    val pointsRoute: List<String>
+        get() = points
 }
