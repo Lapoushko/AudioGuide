@@ -37,6 +37,13 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    sourceSets {
+        getByName("main") {
+            assets {
+                srcDirs("src\\main\\assets", "src\\main\\assets")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -49,6 +56,9 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.picasso)
     implementation(libs.mysql.connector.java)
+    implementation(libs.play.services.location)
+    implementation(libs.library)
+    implementation(libs.maps.mobile)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
